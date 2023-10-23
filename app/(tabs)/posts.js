@@ -1,6 +1,6 @@
 import { Stack, useRouter } from "expo-router";
-import { StyleSheet, Text, View, Button, Platform } from "react-native";
-import { useState } from "react";
+import { StyleSheet, Text, View, Button, Platform, FlatList } from "react-native";
+import { useState, useEffect } from "react";
 import { log } from "react-native-reanimated";
 
 export default function Posts() {
@@ -23,6 +23,7 @@ export default function Posts() {
 
         setPosts(postsArray); // Set the sorted posts in your application's state
       }
+
     }, []);
 
     
@@ -34,23 +35,25 @@ export default function Posts() {
     function showCreateModal() {
         router.push("/create");
     }
-    return (
-        <View style={styles.container}>
+   return (
+        <View style={styles.list}>
             <Stack.Screen
                 options={{
                     headerRight: () => (
                         <Button
                             title="Add New"
                             color={Platform.OS === "ios" ? "#fff" : "#264c59"}
-                            onPress={showCreateModal}
+                            onPress={() => router.push("/post-modal")}
                         />
                     )
                 }}
             />
-            <View style={styles.main}>
-                <Text style={styles.title}>Posts</Text>
-                <Text style={styles.subtitle}>This is the first page of your app.</Text>
-            </View>
+
+            <FlatList
+                data={posts}
+                renderItem={renderPost}
+                keyExtractor={post => post.id}
+            />
         </View>
     );
 }
@@ -58,23 +61,22 @@ export default function Posts() {
 
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: "center",
-        padding: 24
-    },
-    main: {
-        flex: 1,
-        justifyContent: "center",
-        maxWidth: 960,
-        marginHorizontal: "auto"
-    },
-    title: {
-        fontSize: 64,
-        fontWeight: "bold"
-    },
-    subtitle: {
-        fontSize: 36,
-        color: "#38434D"
-    }
+  list: {
+    flex: 1,
+  },
+  postContainer: {
+    flex: 1,
+    minHeight: 320,
+    paddingBottom: 30,
+    borderBottomColor: "#acc6c9",
+    borderBottomWidth: 0.5,
+  },
+  caption: {
+    fontSize: 22,
+    padding: 15,
+  },
+  image: {
+    aspectRatio: 1,
+    flex: 1,
+  },
 });
