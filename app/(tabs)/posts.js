@@ -1,13 +1,5 @@
 import { Stack, useRouter } from "expo-router";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Button,
-  Platform,
-  FlatList,
-  Image,
-} from "react-native";
+import {StyleSheet, Text, View, Button, Platform, FlatList, Image,} from "react-native";
 import { useState, useEffect } from "react"; //vi skal bruge state til at håndtere posts
 
 export default function Posts() {
