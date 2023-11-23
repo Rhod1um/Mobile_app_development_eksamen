@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { Text, View, TextInput, StyleSheet, Button } from "react-native";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { Stack, useRouter } from "expo-router";
+import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+import { useState } from "react";
+import { Button, StyleSheet, Text, TextInput, View } from "react-native";
 
 export default function SignUp() {
   const [mail, setMail] = useState("");
@@ -13,7 +13,7 @@ export default function SignUp() {
   function handleSignUp() {
     createUserWithEmailAndPassword(auth, mail, password)
       .then((userCredential) => {
-        // Signed in
+        // Signed up
         const user = userCredential.user;
         console.log(user);
         router.replace("/posts");

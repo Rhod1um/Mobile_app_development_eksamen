@@ -35,9 +35,10 @@ export default function Map() {
     <View style={styles.container}>
       <MapView style={styles.map}>
         {posts.map((post) => (
+          
           <Marker
             key={post.id}
-            coordinate={post.location}
+            coordinate={post?.location}
             title={post.caption}
           />
         ))}
