@@ -1,6 +1,6 @@
-import { Stack, useRouter } from "expo-router";
+import { Stack, useRouter, useFocusEffect } from "expo-router";
 import {StyleSheet, Text, View, Button, Platform, FlatList, Image,} from "react-native";
-import { useState, useEffect } from "react"; //vi skal bruge state til at håndtere posts
+import { useState, useEffect, useCallback } from "react"; //vi skal bruge state til at håndtere posts
 
 export default function Posts() {
   const [posts, setPosts] = useState([]);
@@ -14,6 +14,14 @@ export default function Posts() {
   useEffect(() => {
     getPosts();
   }, []);
+  // Sometimes we want to run side-effects when a screen is focused.
+  // https://reactnavigation.org/docs/use-focus-effect/
+  useFocusEffect(
+    // If you don't wrap your effect in React.useCallback, the effect will run every render if the screen is focused.
+    useCallback(() => {
+      getPosts();
+    }, [])
+  );
 
   async function getPosts() {
     const response = await fetch(`${API_URL}/posts.json`); // Fetch posts data from the specified API endpoint
@@ -55,7 +63,7 @@ export default function Posts() {
             <Button
               title="Add New"
               color={Platform.OS === "ios" ? "#fff" : "#264c59"}
-              onPress={() => router.push("/post-modal")}
+              onPress={() => router.push("/create")}
             />
           ),
         }}
