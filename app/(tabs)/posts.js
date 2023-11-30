@@ -1,6 +1,15 @@
 import { Stack, useRouter, useFocusEffect } from "expo-router";
-import {StyleSheet, Text, View, Button, Platform, FlatList, Image,} from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  Platform,
+  FlatList,
+  Image,
+} from "react-native";
 import { useState, useEffect, useCallback } from "react"; //vi skal bruge state til at håndtere posts
+import Post from "../components/post";
 
 export default function Posts() {
   const [posts, setPosts] = useState([]);
@@ -38,7 +47,7 @@ export default function Posts() {
 
     setPosts(postsArray); // Set the sorted posts in your application's state
 
-    console.log(postsArray);
+    //console.log(postsArray);
   }
 
   function showCreateModal() {
@@ -47,12 +56,7 @@ export default function Posts() {
 
   function renderPost(item) {
     const post = item.item;
-    return (
-      <View style={styles.postContainer}>
-        <Image style={styles.image} source={{ uri: post.image }} />
-        <Text style={styles.caption}>{post.caption}</Text>
-      </View>
-    );
+    return <Post post={post} reload={getPosts} />;
   }
 
   return (

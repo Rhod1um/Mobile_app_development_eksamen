@@ -1,4 +1,3 @@
-const API_URL = "https://expo-modal-tab-nav-default-rtdb.firebaseio.com/";
 import { StyleSheet, Text, View } from "react-native";
 
 export default function Users() {

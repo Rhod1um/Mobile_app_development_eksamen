@@ -22,7 +22,7 @@ export default function UserProfile() {
   const [mail, setMail] = useState("");
   const [title, setTitle] = useState("");
   const [image, setImage] = useState(
-    "https://t3.gstatic.com/licensed-image?q=tbn:ANd9GcRoT6NNDUONDQmlthWrqIi_frTjsjQT4UZtsJsuxqxLiaFGNl5s3_pBIVxS6-VsFUP_"
+    "https://www.pulsecarshalton.co.uk/wp-content/uploads/2016/08/jk-placeholder-image.jpg"
   );
   const url = `https://expo-modal-tab-nav-default-rtdb.firebaseio.com/users/${auth.currentUser?.uid}.json`;
   //...
@@ -34,12 +34,12 @@ export default function UserProfile() {
       const response = await fetch(url);
       const userData = await response.json();
 
-      setName(userData.name);
-      setTitle(userData.title);
-      setImage(userData.image);
+      setName(userData?.name);
+      setTitle(userData?.title);
+      setImage(userData?.image);
 
-      console.log(image);
-      console.log(userData);
+      //console.log(image);
+      //console.log(userData);
     }
     getUser();
   }, []);
@@ -104,7 +104,7 @@ export default function UserProfile() {
           style={styles.input}
           onChangeText={setName}
           value={name}
-          placeholder="Type your mail"
+          placeholder="Type your name"
           autoCapitalize="none"
         />
 
@@ -113,7 +113,7 @@ export default function UserProfile() {
           style={styles.input}
           onChangeText={setTitle}
           value={title}
-          placeholder="Type your mail"
+          placeholder="Type your title"
           autoCapitalize="none"
         />
         <Text style={styles.label}>Mail</Text>
