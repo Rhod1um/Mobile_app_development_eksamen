@@ -18,7 +18,7 @@ export default function Update() {
   const { id } = useSearchParams();
   const [caption, setCaption] = useState("");
   const [image, setImage] = useState(
-    "https://t3.gstatic.com/licensed-image?q=tbn:ANd9GcRoT6NNDUONDQmlthWrqIi_frTjsjQT4UZtsJsuxqxLiaFGNl5s3_pBIVxS6-VsFUP_"
+    "https://www.pulsecarshalton.co.uk/wp-content/uploads/2016/08/jk-placeholder-image.jpg"
   );
   const API_URL = "https://expo-modal-tab-nav-default-rtdb.firebaseio.com";
 

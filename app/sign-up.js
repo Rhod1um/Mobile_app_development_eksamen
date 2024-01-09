@@ -17,7 +17,6 @@ export default function SignUp() {
         const user = userCredential.user;
         console.log(user);
         router.replace("/posts");
-        // ...
       })
       .catch((error) => {
         let errorMessage = error.code.split("/")[1];

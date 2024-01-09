@@ -19,7 +19,7 @@ export default function Post({ post, reload }) {
                 options,
                 cancelButton,
                 destructiveButtonIndex,
-                title: "Edit Post"
+                title: ""
             },
             selectedIndex => {
                 if (selectedIndex === 0) {

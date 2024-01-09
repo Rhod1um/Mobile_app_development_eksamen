@@ -28,18 +28,6 @@ export default function TabLayout() {
           }}
         />
         <Tabs.Screen
-          name="users"
-          options={{
-            title: "Users",
-            tabBarActiveTintColor: "#264c59",
-            tabBarInactiveTintColor: "#fff",
-            tabBarActiveBackgroundColor: "#acc6c9",
-            tabBarIcon: () => (
-              <Ionicons name="people" size={24} color="white" />
-            ),
-          }}
-        />
-        <Tabs.Screen
           name="map"
           options={{
             title: "Map",

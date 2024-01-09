@@ -5,8 +5,9 @@ import { ActionSheetProvider } from "@expo/react-native-action-sheet";
 
 export default function AppLayout() {
   //RootSiblingParent is used for toast
+  // ActionSheetProvider is used for action sheets (update, delete osv)
     return (
-      <ActionSheetProvider>
+      <ActionSheetProvider> 
         <RootSiblingParent>
           <>
             <StatusBar style="light" />

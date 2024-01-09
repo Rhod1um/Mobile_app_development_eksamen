@@ -25,7 +25,7 @@ export default function UserProfile() {
     "https://www.pulsecarshalton.co.uk/wp-content/uploads/2016/08/jk-placeholder-image.jpg"
   );
   const url = `https://expo-modal-tab-nav-default-rtdb.firebaseio.com/users/${auth.currentUser?.uid}.json`;
-  //...
+  // https://expo-post-app-49c88-default-rtdb.europe-west1.firebasedatabase.app/
 
   useEffect(() => {
     setMail(auth.currentUser.email);

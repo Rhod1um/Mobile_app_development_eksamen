@@ -16,6 +16,8 @@ export default function Posts() {
   const router = useRouter();
 
   const API_URL = "https://expo-modal-tab-nav-default-rtdb.firebaseio.com/";
+  //const API_URL = "https://expo-modal-tab-nav-default-rtdb.firebaseio.com/";
+  // https://expo-post-app-49c88-default-rtdb.europe-west1.firebasedatabase.app/
   //https://expo-post-app-49c88-default-rtdb.europe-west1.firebasedatabase.app/
   //https://post-rest-api-default-rtdb.firebaseio.com
   //const API_URL = "https://{your-firebase-db-name}.firebaseio.com";
@@ -30,11 +32,11 @@ export default function Posts() {
     useCallback(() => {
       getPosts();
     }, [])
-  );
+  ); // at hente posts sker ved mounting øverst og når brugeren interagere, nederst (useFocusEffect)
 
   async function getPosts() {
     const response = await fetch(`${API_URL}/posts.json`); // Fetch posts data from the specified API endpoint
-    const dataObj = await response.json(); // Parse the response data into an object
+    const dataObj = await response.json(); // Parse fra json til javascript objekt
 
     // Convert the data object into an array of posts with 'id' properties
     const postsArray = Object.keys(dataObj).map((key) => ({
@@ -45,9 +47,7 @@ export default function Posts() {
     // Sort the posts in descending order based on their 'createdAt' property
     postsArray.sort((postA, postB) => postB.createdAt - postA.createdAt); // sort by timestamp/ createdBy
 
-    setPosts(postsArray); // Set the sorted posts in your application's state
-
-    //console.log(postsArray);
+    setPosts(postsArray);
   }
 
   function showCreateModal() {

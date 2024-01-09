@@ -12,7 +12,7 @@ export default function SignIn() {
 
   function handleSignIn() {
     signInWithEmailAndPassword(auth, mail, password)
-      .then((userCredential) => {
+      .then((userCredential) => { //userCredentials er enten en user eller der blev kastet en error
         // Signed in
         const user = userCredential.user;
         console.log(user);
